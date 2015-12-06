@@ -1,7 +1,6 @@
 package com.myapps.materialapplication;
 
 import android.app.Fragment;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -32,7 +31,7 @@ public class MainActivity extends ActionBarActivity
         // Set up the drawer.
         mNavigationDrawerFragment.setup(R.id.fragment_drawer, (DrawerLayout) findViewById(R.id.drawer), mToolbar);
         // populate the navigation drawer
-        mNavigationDrawerFragment.setUserData("John Doe", "johndoe@doe.com", BitmapFactory.decodeResource(getResources(), R.drawable.avatar));
+//        mNavigationDrawerFragment.setUserData("John Doe", "johndoe@doe.com", BitmapFactory.decodeResource(getResources(), R.drawable.avatar));
     }
 
     @Override
@@ -40,17 +39,28 @@ public class MainActivity extends ActionBarActivity
         Fragment fragment;
         switch (position) {
             case 0: //search//todo
+                // if !user.matched
+                fragment = getFragmentManager().findFragmentByTag(UnmatchedFragment.TAG);
+                if (fragment == null) {
+                    fragment = new UnmatchedFragment();
+                }
+                getFragmentManager().beginTransaction().replace(R.id.container, fragment, UnmatchedFragment.TAG).commit();
                 break;
             case 1: //stats
-                fragment = getFragmentManager().findFragmentByTag(StatsFragment.TAG);
+                fragment = getFragmentManager().findFragmentByTag(RecentsFragment.TAG);
                 if (fragment == null) {
-                    fragment = new StatsFragment();
+                    fragment = new RecentsFragment();
                 }
-                getFragmentManager().beginTransaction().replace(R.id.container, fragment, StatsFragment.TAG).commit();
+                getFragmentManager().beginTransaction().replace(R.id.container, fragment, RecentsFragment.TAG).commit();
                 break;
             case 2: //my account //todo
                 break;
             case 3: //settings //todo
+                fragment = getFragmentManager().findFragmentByTag(SettingsFragment.TAG);
+                if (fragment == null) {
+                    fragment = new SettingsFragment();
+                }
+                getFragmentManager().beginTransaction().replace(R.id.container, fragment, SettingsFragment.TAG).commit();
                 break;
         }
     }

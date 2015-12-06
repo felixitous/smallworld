@@ -16,16 +16,14 @@ import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -118,10 +116,10 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
 
     public List<NavigationItem> getMenu() {
         List<NavigationItem> items = new ArrayList<NavigationItem>();
-        items.add(new NavigationItem(getString(R.string.search), getResources().getDrawable(R.drawable.ic_action_search)));
-        items.add(new NavigationItem(getString(R.string.stats), getResources().getDrawable(R.drawable.ic_action_trending_up)));
-        items.add(new NavigationItem(getString(R.string.myaccount), getResources().getDrawable(R.drawable.ic_action_account_box)));
-        items.add(new NavigationItem(getString(R.string.settings), getResources().getDrawable(R.drawable.ic_action_settings)));
+        items.add(new NavigationItem(getString(R.string.meeting), getResources().getDrawable(R.drawable.ic_supervisor_account_black_18dp)));
+        items.add(new NavigationItem(getString(R.string.recents), getResources().getDrawable(R.drawable.ic_account_circle_black_18dp)));
+        items.add(new NavigationItem(getString(R.string.profile), getResources().getDrawable(R.drawable.ic_account_circle_black_18dp)));
+        items.add(new NavigationItem(getString(R.string.settings), getResources().getDrawable(R.drawable.ic_build_black_18dp)));
         return items;
     }
 
@@ -226,12 +224,12 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         mActionBarDrawerToggle.onConfigurationChanged(newConfig);
     }
 
-    public void setUserData(String user, String email, Bitmap avatar) {
-        ImageView avatarContainer = (ImageView) mFragmentContainerView.findViewById(R.id.imgAvatar);
-        ((TextView) mFragmentContainerView.findViewById(R.id.txtUserEmail)).setText(email);
-        ((TextView) mFragmentContainerView.findViewById(R.id.txtUsername)).setText(user);
-        avatarContainer.setImageDrawable(new RoundImage(avatar));
-    }
+//    public void setUserData(String user, String email, Bitmap avatar) {
+//        ImageView avatarContainer = (ImageView) mFragmentContainerView.findViewById(R.id.imgAvatar);
+//        ((TextView) mFragmentContainerView.findViewById(R.id.txtUserEmail)).setText(email);
+//        ((TextView) mFragmentContainerView.findViewById(R.id.txtUsername)).setText(user);
+//        avatarContainer.setImageDrawable(new RoundImage(avatar));
+//    }
 
     public View getGoogleDrawer() {
         return mFragmentContainerView.findViewById(R.id.googleDrawer);

@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">SmallWorldMobile</string>
+    <string name="hello_world">Hello World!</string>
+    <string name="drawer_open">Menu opened</string>
+    <string name="drawer_close">Menu closed</string>
+    <string name="action_settings">Settings</string>
+    <string name="meeting">Meeting</string>
+    <string name="settings">Settings</string>
+    <string name="profile">Profile</string>
+    <string name="recents">Recents</string>
+</resources>

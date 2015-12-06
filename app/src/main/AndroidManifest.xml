@@ -16,6 +16,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".SimpleProfile"
+            android:label="@string/title_activity_simple_profile" >
+        </activity>
+        <activity
+            android:name=".UserWithDossier"
+            android:label="@string/title_activity_user_with_dossier" >
+        </activity>
+        <activity
+            android:name=".ComplicatedProfile"
+            android:label="@string/title_activity_complicated_profile" >
+        </activity>
     </application>
 
 </manifest>

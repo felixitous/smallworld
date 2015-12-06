@@ -34,7 +34,7 @@
         <fragment
             android:id="@+id/fragment_drawer"
             android:name="com.myapps.materialapplication.NavigationDrawerFragment"
-            android:layout_width="@dimen/navigation_drawer_width"
+            android:layout_width="150dp"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             app:layout="@layout/fragment_navigation_drawer"/>
