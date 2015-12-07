@@ -17,6 +17,7 @@ public class MainActivity extends ActionBarActivity
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
     private Toolbar mToolbar;
+    private boolean isMatched = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +40,20 @@ public class MainActivity extends ActionBarActivity
         Fragment fragment;
         switch (position) {
             case 0: //search//todo
-                // if !user.matched
-                fragment = getFragmentManager().findFragmentByTag(UnmatchedFragment.TAG);
-                if (fragment == null) {
-                    fragment = new UnmatchedFragment();
+                if (isMatched) {
+                    fragment = getFragmentManager().findFragmentByTag(MatchedFragment.TAG);
+                    if (fragment == null) {
+                        fragment = new MatchedFragment();
+                    }
+                    getFragmentManager().beginTransaction().replace(R.id.container, fragment, MatchedFragment.TAG).commit();
+                } else {
+                    fragment = getFragmentManager().findFragmentByTag(UnmatchedFragment.TAG);
+                    if (fragment == null) {
+                        fragment = new UnmatchedFragment();
+                    }
+                    getFragmentManager().beginTransaction().replace(R.id.container, fragment, UnmatchedFragment.TAG).commit();
                 }
-                getFragmentManager().beginTransaction().replace(R.id.container, fragment, UnmatchedFragment.TAG).commit();
+
                 break;
             case 1: //stats
                 fragment = getFragmentManager().findFragmentByTag(RecentsFragment.TAG);
@@ -99,6 +108,5 @@ public class MainActivity extends ActionBarActivity
 
         return super.onOptionsItemSelected(item);
     }
-
 
 }

@@ -15,9 +15,14 @@
     <color name="myWindowBackground">#FFFFFF</color>
     <color name="myTextPrimaryColor">#212121</color>
     <color name="myNavigationColor">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="clouds">#ecf0f1</color>
+
     <color name="black">#000</color>
     <color name="error_color">#000</color>
     <color name="babyblue">#C5EFF7</color>
+
+    <color name="cardback">#40A2DED0</color>
 
 
     <color name="selected_gray">#ffdbdbdb</color>

@@ -2,11 +2,23 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.myapps.materialapplication" >
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.example.mapdemo.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAZIvA7SP7C9z8PR0layspwnc5N7-SDqfc" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
@@ -17,16 +29,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SimpleProfile"
-            android:label="@string/title_activity_simple_profile" >
-        </activity>
-        <activity
-            android:name=".UserWithDossier"
-            android:label="@string/title_activity_user_with_dossier" >
-        </activity>
-        <activity
             android:name=".ComplicatedProfile"
             android:label="@string/title_activity_complicated_profile" >
+        </activity>
+        <activity
+            android:name=".Destination"
+            android:label="Destination" >
         </activity>
     </application>
 
