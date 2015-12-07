@@ -4,91 +4,89 @@
     android:layout_height="match_parent"
     tools:context="smallworld.smallworld.AccountDisplay">
 
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+            <ImageView
+                android:layout_width="240dp"
+                android:layout_height="240dp"
+                android:id="@+id/profileImage"
+                android:layout_marginTop="10dp" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/profileImage"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Matt Wong"
+                android:layout_marginTop="10dp"
+                android:id="@+id/nameInfo"
+                android:layout_below="@+id/profileImage"
+                android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Matt Wong"
-        android:layout_marginTop="10dp"
-        android:id="@+id/nameInfo"
-        android:layout_below="@+id/profileImage"
-        android:layout_centerHorizontal="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="21"
+                android:layout_marginTop="10dp"
+                android:id="@+id/ageInfo"
+                android:layout_below="@+id/nameInfo"
+                android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="21"
-        android:layout_marginTop="10dp"
-        android:id="@+id/ageInfo"
-        android:layout_below="@+id/nameInfo"
-        android:layout_centerHorizontal="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Computer Science"
+                android:layout_marginTop="10dp"
+                android:id="@+id/interest1Info"
+                android:layout_below="@+id/ageInfo"
+                android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Computer Science"
-        android:layout_marginTop="10dp"
-        android:id="@+id/interest1Info"
-        android:layout_below="@+id/ageInfo"
-        android:layout_centerHorizontal="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Microsoft SDE"
+                android:layout_marginTop="10dp"
+                android:id="@+id/interest2Info"
+                android:layout_below="@+id/interest1Info"
+                android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Microsoft SDE"
-        android:layout_marginTop="10dp"
-        android:id="@+id/interest2Info"
-        android:layout_below="@+id/interest1Info"
-        android:layout_centerHorizontal="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Voyager Consulting"
+                android:layout_marginTop="10dp"
+                android:id="@+id/interest3Info"
+                android:layout_below="@+id/interest2Info"
+                android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Voyager Consulting"
-        android:layout_marginTop="10dp"
-        android:id="@+id/interest3Info"
-        android:layout_below="@+id/interest2Info"
-        android:layout_centerHorizontal="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="(626) - 555 - 2320"
+                android:layout_marginTop="10dp"
+                android:id="@+id/phoneNumberInfo"
+                android:layout_below="@+id/interest3Info"
+                android:layout_centerHorizontal="true" />
+            
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="40dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="(626) - 555 - 2320"
-        android:layout_marginTop="10dp"
-        android:id="@+id/phoneNumberInfo"
-        android:layout_below="@+id/interest3Info"
-        android:layout_centerHorizontal="true" />
+        </LinearLayout>
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Connection List"
-        android:id="@+id/mainConnectList"
-        android:layout_below="@+id/phoneNumberInfo"
-        android:layout_centerHorizontal="true" />
+    </ScrollView>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Edit Info"
-        android:id="@+id/editInfo"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/mainConnectList" />
+
 
 
 

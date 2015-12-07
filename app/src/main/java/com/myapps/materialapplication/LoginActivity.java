@@ -38,6 +38,11 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         FacebookSdk.sdkInitialize(getApplicationContext());
 
+        if (AccessToken.getCurrentAccessToken() != null) {
+            loggedIn = "True";
+            setInformation();
+        }
+
         loginButton = (LoginButton) findViewById(R.id.login_button);
         loginButton.setReadPermissions(Arrays.asList("public_profile, email, user_birthday, user_friends"));
         LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
@@ -108,8 +113,6 @@ public class LoginActivity extends AppCompatActivity {
                         loggedIn();
 
 
-//                        TextView view = (TextView) findViewById(R.id.name);
-//                        view.setText(name);
                     }
                 });
         Bundle parameters = new Bundle();
