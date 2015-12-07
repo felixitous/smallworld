@@ -6,7 +6,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.provider.ContactsContract;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -16,7 +15,6 @@ import android.view.MenuItem;
 
 import com.facebook.FacebookSdk;
 import com.facebook.GraphResponse;
-import com.facebook.login.LoginManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,7 +26,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity
@@ -39,7 +36,8 @@ public class MainActivity extends AppCompatActivity
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
     private Toolbar mToolbar;
-    private boolean isMatched = true;
+    public static boolean isMatched = false;
+    public static boolean isMatching = false;
     public static JSONObject rdr;
     public static GraphResponse personalInfo;
     private URL url;
@@ -90,11 +88,19 @@ public class MainActivity extends AppCompatActivity
                     }
                     getFragmentManager().beginTransaction().replace(R.id.container, fragment, MatchedFragment.TAG).commit();
                 } else {
-                    fragment = getFragmentManager().findFragmentByTag(UnmatchedFragment.TAG);
-                    if (fragment == null) {
-                        fragment = new UnmatchedFragment();
+                    if (isMatching) {
+                        fragment = getFragmentManager().findFragmentByTag(LoadingFragment.TAG);
+                        if (fragment == null) {
+                            fragment = new LoadingFragment();
+                        }
+                        getFragmentManager().beginTransaction().replace(R.id.container, fragment, LoadingFragment.TAG).commit();
+                    } else {
+                        fragment = getFragmentManager().findFragmentByTag(UnmatchedFragment.TAG);
+                        if (fragment == null) {
+                            fragment = new UnmatchedFragment();
+                        }
+                        getFragmentManager().beginTransaction().replace(R.id.container, fragment, UnmatchedFragment.TAG).commit();
                     }
-                    getFragmentManager().beginTransaction().replace(R.id.container, fragment, UnmatchedFragment.TAG).commit();
                 }
 
                 break;
@@ -122,6 +128,14 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+
+    public boolean isMatching() {
+        return this.isMatching;
+    }
+
+    public void setMatching(boolean bool) {
+        this.isMatching = bool;
+    }
 
     @Override
     public void onBackPressed() {
