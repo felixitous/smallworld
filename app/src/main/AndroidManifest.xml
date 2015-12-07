@@ -19,6 +19,12 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAZIvA7SP7C9z8PR0layspwnc5N7-SDqfc" />
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+        <activity android:name="com.facebook.FacebookActivity"
+            android:configChanges=
+                "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:label="@string/app_name" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
@@ -34,8 +40,11 @@
         </activity>
         <activity
             android:name=".Destination"
-            android:label="Destination" >
-        </activity>
+            android:label="Destination" />
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login" />
+
     </application>
 
 </manifest>

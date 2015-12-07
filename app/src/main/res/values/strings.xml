@@ -14,6 +14,7 @@
     <string name="recents">Recents</string>
 
     <string name="title_activity_simple_profile">SimpleProfile</string>
+    <string name="facebook_app_id">903820446391845</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_user_with_dossier">UserWithDossier</string>
@@ -39,4 +40,5 @@ Forfeited you engrossed but gay sometimes explained. Another as studied it to ev
 Assure polite his really and others figure though. Day age advantages end sufficient eat expression travelling. Of on am father by agreed supply rather either. Own handsome delicate its property mistress her end appetite. Mean are sons too sold nor said. Son share three men power boy you. Now merits wonder effect garret own.
 
 </string>
+    <string name="title_activity_login">LoginActivity</string>
 </resources>
