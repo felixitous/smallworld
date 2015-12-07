@@ -201,13 +201,18 @@ public class MainActivity extends AppCompatActivity
 
     private String urlBuilder() {
         String email = "";
+        String name = "";
         try {
             email = personalInfo.getJSONObject().getString("email");
+            name = personalInfo.getJSONObject().getString("name");
         } catch (JSONException | NullPointerException e) {
             Log.d("bad response", "oh man");
         }
         String retrieval = "http://smallworld-db.herokuapp.com/users/search?format=json&email=";
         retrieval = retrieval + email;
+        String new_title = "Hello, ";
+        new_title = new_title + name;
+        setTitle(new_title);
         return retrieval;
     }
 
