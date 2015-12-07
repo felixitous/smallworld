@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.provider.ContactsContract;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -27,6 +28,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity
@@ -38,9 +40,10 @@ public class MainActivity extends AppCompatActivity
     private NavigationDrawerFragment mNavigationDrawerFragment;
     private Toolbar mToolbar;
     private boolean isMatched = true;
+    public static JSONObject rdr;
     public static GraphResponse personalInfo;
     private URL url;
-    private Bitmap userPicture;
+    public static Bitmap userPicture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +51,7 @@ public class MainActivity extends AppCompatActivity
         FacebookSdk.sdkInitialize(this.getApplicationContext());
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-        LoginManager.getInstance().logOut();
+//        LoginManager.getInstance().logOut();
         setContentView(R.layout.activity_main);
         mToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
         setSupportActionBar(mToolbar);
@@ -151,15 +154,17 @@ public class MainActivity extends AppCompatActivity
                 total.append(line);
             }
 
-            JSONObject rdr = new JSONObject(total.toString());
+            rdr = new JSONObject(total.toString());
             Log.d("JSON Reponse:", total.toString());
             String target = rdr.getString("selfie");
             userPicture = DownloadImage(target);
+
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 
     public void setPersonalInformation() {
         mNavigationDrawerFragment.personalInfo(userPicture);
