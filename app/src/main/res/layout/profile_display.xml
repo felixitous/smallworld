@@ -18,66 +18,105 @@
                 android:id="@+id/profileImage"
                 android:layout_marginTop="10dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Matt Wong"
-                android:layout_marginTop="10dp"
-                android:id="@+id/nameInfo"
-                android:layout_below="@+id/profileImage"
-                android:layout_centerHorizontal="true" />
+                android:gravity="center">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="21"
-                android:layout_marginTop="10dp"
-                android:id="@+id/ageInfo"
-                android:layout_below="@+id/nameInfo"
-                android:layout_centerHorizontal="true" />
+                <EditText
+                    android:id="@+id/nameInfo"
+                    android:layout_width="240dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:hint="name"
+                    android:textSize="24dp"
+                    />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Computer Science"
-                android:layout_marginTop="10dp"
-                android:id="@+id/interest1Info"
-                android:layout_below="@+id/ageInfo"
-                android:layout_centerHorizontal="true" />
+            </android.support.design.widget.TextInputLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Microsoft SDE"
-                android:layout_marginTop="10dp"
-                android:id="@+id/interest2Info"
-                android:layout_below="@+id/interest1Info"
-                android:layout_centerHorizontal="true" />
+                android:gravity="center">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Voyager Consulting"
-                android:layout_marginTop="10dp"
-                android:id="@+id/interest3Info"
-                android:layout_below="@+id/interest2Info"
-                android:layout_centerHorizontal="true" />
+                <EditText
+                    android:id="@+id/ageInfo"
+                    android:layout_width="240dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:textSize="24dp"
+                    android:hint="Age"
+                    />
 
-            <TextView
-                android:layout_width="wrap_content"
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="(626) - 555 - 2320"
-                android:layout_marginTop="10dp"
-                android:id="@+id/phoneNumberInfo"
-                android:layout_below="@+id/interest3Info"
-                android:layout_centerHorizontal="true" />
-            
+                android:gravity="center">
+
+                <EditText
+                    android:id="@+id/interest1Info"
+                    android:layout_width="240dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:textSize="24dp"
+                    android:hint="First Interest"
+                    />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <EditText
+                    android:id="@+id/interest2Info"
+                    android:layout_width="240dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:textSize="24dp"
+                    android:hint="Second Interest"
+                    />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <EditText
+                    android:id="@+id/interest3Info"
+                    android:layout_width="240dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:textSize="24dp"
+                    android:hint="Third Interest"
+                    />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <EditText
+                    android:id="@+id/phoneNumberInfo"
+                    android:inputType="phone"
+                    android:layout_width="240dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:textSize="24dp"
+                    android:text="626 - 780 - 3858"
+                    android:hint="Phone Number"
+                    />
+
+            </android.support.design.widget.TextInputLayout>
+
+
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="40dp" />
