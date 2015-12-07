@@ -24,15 +24,9 @@
                 android:id="@+id/bgheader"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
-                android:fitsSystemWindows="true"
-                android:background="@drawable/matt"
-                app:layout_collapseMode="parallax" />
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/MyToolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
+                android:src="@drawable/matt2"
                 app:layout_collapseMode="parallax" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
@@ -56,21 +50,57 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="110dp">
 
-                <LinearLayout
+                <RelativeLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:id="@+id/imageView2"
+                        android:background="@drawable/linkedin"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginTop="2dp" />
+
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="300dp"
                         android:layout_height="wrap_content"
                         android:textColor="@color/error_color"
                         android:textSize="20sp"
-                        android:text="This text is part of first Cardview\n\n"/>
+                        android:text="Lead Software Engineer"
+                        android:layout_gravity="center_horizontal"
+                        android:id="@+id/jobtitle"
+                        android:layout_alignParentTop="true"
+                        android:layout_toEndOf="@+id/imageView2"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="3dp" />
+                    <TextView
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/card_gray"
+                        android:text="Airbnb, Inc. (May 2013 – August 2015)"
+                        android:layout_gravity="center_horizontal"
+                        android:id="@+id/companyname"
+                        android:layout_marginLeft="10dp"
+                        android:layout_below="@+id/jobtitle"
+                        android:layout_toEndOf="@+id/imageView2"
+                        android:textSize="14dp" />
 
-                </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Working as a part of the infastructure team responsible for the integration and development of new tools for internal usage"
+                        android:id="@+id/textView2"
+                        android:textColor="@color/card_gray"
+                        android:layout_below="@+id/imageView2"
+                        android:layout_alignParentStart="true"
+                        android:textSize="14dp"
+                        android:layout_margin="4dp" />
+
+                </RelativeLayout>
 
             </android.support.v7.widget.CardView>
 
@@ -79,22 +109,174 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="82dp">
 
-                <LinearLayout
+                <RelativeLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:id="@+id/imageView3"
+                        android:background="@drawable/twittericon"
+                        android:layout_marginLeft="6dp" />
+
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="110dp"
                         android:layout_height="wrap_content"
                         android:textSize="20sp"
-                        android:textColor="@color/abc_search_url_text"
-                        android:text="This text is part of second Cardview\n\n"/>
+                        android:textColor="@color/error_color"
+                        android:text="Matt Wong"
+                        android:id="@+id/twittername"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="4dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_toEndOf="@+id/imageView3"
+                        android:layout_marginTop="10dp" />
+
+                    <TextView
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:text="\@mattywongster · 2h ago"
+                        android:id="@+id/textView3"
+                        android:textColor="@color/card_gray"
+                        android:layout_marginEnd="11dp"
+                        android:textSize="15dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_alignBottom="@+id/twittername"
+                        android:layout_alignEnd="@+id/textView4"
+                        android:layout_marginBottom="2dp" />
+
+                    <TextView
+                        android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:text="Looking forward to going fishing this weekend in Sacramento!"
+                        android:id="@+id/textView4"
+                        android:textColor="@color/card_gray"
+                        android:textIsSelectable="true"
+                        android:textSize="15dp"
+                        android:layout_below="@+id/imageView3"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="7dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="#gonefishing #pto"
+                        android:id="@+id/textView5"
+                        android:textColor="@color/twitterblue"
+                        android:layout_marginStart="48dp"
+                        android:layout_alignBottom="@+id/textView4"
+                        android:layout_alignStart="@+id/twittername" />
 
 
-                </LinearLayout>
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="82dp">
+
+                <RelativeLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:id="@+id/imageView4"
+                        android:background="@drawable/rss"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="5dp" />
+
+                    <TextView
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:text="Blog posts from Matt"
+                        android:id="@+id/textView6"
+                        android:textColor="@color/error_color"
+                        android:textSize="20dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_alignTop="@+id/imageView4"
+                        android:layout_toEndOf="@+id/imageView4"
+                        android:layout_marginTop="0dp" />
+
+                    <TextView
+                        android:layout_width="300dp"
+                        android:layout_height="19dp"
+                        android:id="@+id/editText"
+                        android:textColor="@color/card_gray"
+                        android:textSize="13dp"
+                        android:layout_marginLeft="6dp"
+                        android:singleLine="false"
+                        android:text="@string/blog_title"
+                        android:layout_above="@+id/textView7"
+                        android:layout_toEndOf="@+id/imageView4" />
+
+                    <TextView
+                        android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:text="The simplicity of the user interface of the application makes it by far the best user app currently available for ..."
+                        android:id="@+id/textView7"
+                        android:textColor="@color/card_gray"
+                        android:textSize="13dp"
+                        android:layout_below="@+id/imageView4"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginLeft="7dp" />
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="205dp">
+
+                <RelativeLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:id="@+id/imageView2"
+                        android:src="@drawable/coffeecup"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginLeft="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/meetup_location"
+                        android:id="@+id/textView2"
+                        android:textColor="@color/error_color"
+                        android:textSize="20dp"
+                        android:layout_alignBottom="@+id/imageView2"
+                        android:layout_toEndOf="@+id/imageView2"
+                        android:layout_marginLeft="10dp" />
+
+                    <ImageView
+                        android:layout_width="340dp"
+                        android:layout_height="150dp"
+                        android:id="@+id/imageView3"
+                        android:src="@drawable/mapsnippet2"
+                        android:layout_below="@+id/imageView2"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginTop="8dp" />
+                </RelativeLayout>
 
             </android.support.v7.widget.CardView>
 
