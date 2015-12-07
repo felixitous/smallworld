@@ -3,5 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/imageView"
+        android:background="@drawable/smallworld_mug"
+        android:layout_gravity="center" />
 </FrameLayout>
 

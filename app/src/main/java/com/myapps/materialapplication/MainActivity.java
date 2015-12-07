@@ -1,12 +1,17 @@
 package com.myapps.materialapplication;
 
 import android.app.Fragment;
+import android.app.Notification;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.provider.ContactsContract;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -55,6 +60,10 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         mToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
         setSupportActionBar(mToolbar);
+        Bitmap matchPicture = BitmapFactory.decodeResource(this.getResources(),
+                R.drawable.matt);
+
+        notification("Matt Wong", matchPicture);
 
 
 
@@ -249,6 +258,46 @@ public class MainActivity extends AppCompatActivity
 
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void notification(String name, Bitmap photo) {
+        Intent viewIntent = new Intent(this, MainActivity.class);
+        Intent yesIntent = new Intent(this, ComplicatedProfile.class);
+        Log.d("name", name);
+//        yesIntent.putExtra("name1", name);
+        PendingIntent noPendingIntent = PendingIntent.getActivity(this, 0, viewIntent, PendingIntent.FLAG_ONE_SHOT);
+        PendingIntent yesPendingIntent = PendingIntent.getActivity(this, 0, yesIntent, PendingIntent.FLAG_ONE_SHOT);
+
+        NotificationCompat.Action denyAction =
+                new NotificationCompat.Action.Builder(R.drawable.deny,
+                        "Deny", noPendingIntent)
+                        .build();
+
+        NotificationCompat.Action acceptAction =
+                new NotificationCompat.Action.Builder(R.drawable.yes,
+                        "Accept", yesPendingIntent)
+                        .build();
+
+        NotificationCompat.WearableExtender wearableExtender =
+                new NotificationCompat.WearableExtender()
+                        .setBackground(photo)
+                        .addAction(denyAction)
+                        .addAction(acceptAction)
+                        .setHintHideIcon(true);
+
+        Notification notification = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.drawable.earth)
+                .setContentTitle(name)
+                .setContentText("21")
+                .setColor(Color.parseColor("#00BCD4"))
+                .extend(wearableExtender)
+                .setPriority(Notification.PRIORITY_HIGH)
+                .build();
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        notificationManager.cancelAll();
+        notificationManager.notify(0, notification);
+
     }
 
 }
