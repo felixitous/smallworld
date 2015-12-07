@@ -13,6 +13,7 @@ import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Shader;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -24,6 +25,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -176,6 +178,11 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         mDrawerLayout.setDrawerListener(mActionBarDrawerToggle);
     }
 
+    public void personalInfo(Bitmap bitmap) {
+        ImageView view = (ImageView) getActivity().findViewById(R.id.navigationHeader);
+        BitmapDrawable ob = new BitmapDrawable(getResources(), bitmap);
+        view.setBackground(ob);
+    }
     private void selectItem(int position) {
         mCurrentSelectedPosition = position;
         if (mDrawerLayout != null) {
