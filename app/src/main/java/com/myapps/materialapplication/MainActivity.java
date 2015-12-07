@@ -103,6 +103,11 @@ public class MainActivity extends AppCompatActivity
                 getFragmentManager().beginTransaction().replace(R.id.container, fragment, RecentsFragment.TAG).commit();
                 break;
             case 2: //my account //todo
+                fragment = getFragmentManager().findFragmentByTag(ProfileFragment.TAG);
+                if (fragment == null) {
+                    fragment = new ProfileFragment();
+                }
+                getFragmentManager().beginTransaction().replace(R.id.container, fragment, ProfileFragment.TAG).commit();
                 break;
             case 3: //settings //todo
                 fragment = getFragmentManager().findFragmentByTag(SettingsFragment.TAG);

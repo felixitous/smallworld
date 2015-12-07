@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="smallworld.smallworld.AccountDisplay">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/profileImage"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Matt Wong"
+        android:layout_marginTop="10dp"
+        android:id="@+id/nameInfo"
+        android:layout_below="@+id/profileImage"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="21"
+        android:layout_marginTop="10dp"
+        android:id="@+id/ageInfo"
+        android:layout_below="@+id/nameInfo"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Computer Science"
+        android:layout_marginTop="10dp"
+        android:id="@+id/interest1Info"
+        android:layout_below="@+id/ageInfo"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Microsoft SDE"
+        android:layout_marginTop="10dp"
+        android:id="@+id/interest2Info"
+        android:layout_below="@+id/interest1Info"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Voyager Consulting"
+        android:layout_marginTop="10dp"
+        android:id="@+id/interest3Info"
+        android:layout_below="@+id/interest2Info"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="(626) - 555 - 2320"
+        android:layout_marginTop="10dp"
+        android:id="@+id/phoneNumberInfo"
+        android:layout_below="@+id/interest3Info"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Connection List"
+        android:id="@+id/mainConnectList"
+        android:layout_below="@+id/phoneNumberInfo"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit Info"
+        android:id="@+id/editInfo"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/mainConnectList" />
+
+
+
+</RelativeLayout>
