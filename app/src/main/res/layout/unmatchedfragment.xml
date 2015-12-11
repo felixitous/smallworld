@@ -18,16 +18,16 @@
     <Switch
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Switch"
         android:id="@+id/switch1"
         android:layout_below="@+id/imageView"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:checked="false" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Match Me"
+        android:text="Toggle to begin matching!"
         android:id="@+id/textView"
         android:layout_marginTop="78dp"
         android:layout_alignParentTop="true"

@@ -1,5 +1,6 @@
 package com.myapps.materialapplication;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.Notification;
 import android.app.PendingIntent;
@@ -22,6 +23,13 @@ import android.view.MenuItem;
 import com.facebook.FacebookSdk;
 import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.wearable.MessageApi;
+import com.google.android.gms.wearable.Node;
+import com.google.android.gms.wearable.NodeApi;
+import com.google.android.gms.wearable.Wearable;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,7 +41,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity
@@ -42,41 +49,89 @@ public class MainActivity extends AppCompatActivity
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
+
+    private GoogleApiClient mGoogleApiClient;
+    public static final String START_ACTIVITY_PATH = "/start/MainActivity";
+    public static final String START_SUB_ACTIVITY = "/start/SubActivity";
     private NavigationDrawerFragment mNavigationDrawerFragment;
     private Toolbar mToolbar;
-    private boolean isMatched = true;
+    public static boolean isMatched = false;
+    public static boolean isMatching = false;
+    public String denied = "";
+    public String accepted = "";
     public static JSONObject rdr;
+    public static Activity mainAct;
     public static GraphResponse personalInfo;
     private URL url;
     public static Bitmap userPicture;
+    public static Bitmap matchedPicture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        mainAct = this;
+        matchedPicture = BitmapFactory.decodeResource(this.getResources(),
+                R.drawable.kelly_complicated);
         FacebookSdk.sdkInitialize(this.getApplicationContext());
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-//        LoginManager.getInstance().logOut();
+        LoginManager.getInstance().logOut();
         setContentView(R.layout.activity_main);
         mToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
         setSupportActionBar(mToolbar);
-        Bitmap matchPicture = BitmapFactory.decodeResource(this.getResources(),
-                R.drawable.matt);
-
-        notification("Matt Wong", matchPicture);
-
-
 
         if (LoginActivity.loggedIn == null) {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
 //            this.finish();
         }
+
+        denied = getIntent().getStringExtra("unmatched");
+        accepted = getIntent().getStringExtra("matched");
+
+
+        if (denied != null) {
+            Log.d("denied", denied);
+        }
+
+        if (accepted != null) {
+            Log.d("accepted", accepted);
+        }
+
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getFragmentManager().findFragmentById(R.id.fragment_drawer);
 
         // Set up the drawer.
         mNavigationDrawerFragment.setup(R.id.fragment_drawer, (DrawerLayout) findViewById(R.id.drawer), mToolbar);
+
+        if (denied != null) {
+            Log.d("going into denied", "something else");
+            Fragment fragment;
+            fragment = getFragmentManager().findFragmentByTag(UnmatchedFragment.TAG);
+            if (fragment == null) {
+                fragment = new UnmatchedFragment();
+            }
+            getFragmentManager().beginTransaction().replace(R.id.container, fragment, UnmatchedFragment.TAG).commit();
+            mNavigationDrawerFragment.closeDrawer();
+            notificationManager.cancelAll();
+        }
+
+        if (accepted != null) {
+            Log.d("going into accepted", "something else");
+            Fragment fragment;
+            fragment = getFragmentManager().findFragmentByTag(MatchedFragment.TAG);
+            if (fragment == null) {
+                fragment = new MatchedFragment();
+            }
+            getFragmentManager().beginTransaction().replace(R.id.container, fragment, MatchedFragment.TAG).commit();
+            mNavigationDrawerFragment.closeDrawer();
+            notificationManager.cancelAll();
+            matchedNotification("Kelly Shen", matchedPicture);
+        }
+
+
+
 
 //        mNavigationDrawerFragment = (NavigationDrawerFragment)
 //                getFragmentManager().findFragmentById(R.id.fragment_drawer);
@@ -99,11 +154,19 @@ public class MainActivity extends AppCompatActivity
                     }
                     getFragmentManager().beginTransaction().replace(R.id.container, fragment, MatchedFragment.TAG).commit();
                 } else {
-                    fragment = getFragmentManager().findFragmentByTag(UnmatchedFragment.TAG);
-                    if (fragment == null) {
-                        fragment = new UnmatchedFragment();
+                    if (isMatching) {
+                        fragment = getFragmentManager().findFragmentByTag(LoadingFragment.TAG);
+                        if (fragment == null) {
+                            fragment = new LoadingFragment();
+                        }
+                        getFragmentManager().beginTransaction().replace(R.id.container, fragment, LoadingFragment.TAG).commit();
+                    } else {
+                        fragment = getFragmentManager().findFragmentByTag(UnmatchedFragment.TAG);
+                        if (fragment == null) {
+                            fragment = new UnmatchedFragment();
+                        }
+                        getFragmentManager().beginTransaction().replace(R.id.container, fragment, UnmatchedFragment.TAG).commit();
                     }
-                    getFragmentManager().beginTransaction().replace(R.id.container, fragment, UnmatchedFragment.TAG).commit();
                 }
 
                 break;
@@ -132,6 +195,14 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+    public boolean isMatching() {
+        return this.isMatching;
+    }
+
+    public void setMatching(boolean bool) {
+        this.isMatching = bool;
+    }
+
     @Override
     public void onBackPressed() {
         if (mNavigationDrawerFragment.isDrawerOpen())
@@ -146,6 +217,9 @@ public class MainActivity extends AppCompatActivity
         if (LoginActivity.loggedIn != null) {
             retrieveQuery();
             setPersonalInformation();
+            if (accepted != null) {
+                setTitle("Matched!!!");
+            }
         }
     }
 
@@ -260,13 +334,37 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    private void notification(String name, Bitmap photo) {
-        Intent viewIntent = new Intent(this, MainActivity.class);
-        Intent yesIntent = new Intent(this, ComplicatedProfile.class);
+    public void matchedNotification(String name, Bitmap photo) {
+        NotificationCompat.WearableExtender wearableExtender =
+                new NotificationCompat.WearableExtender()
+                        .setBackground(photo)
+                        .setHintHideIcon(true);
+
+        Notification notification = new NotificationCompat.Builder(MainActivity.mainAct)
+                .setSmallIcon(R.drawable.earth)
+                .setContentTitle("Matched")
+                .setContentText("Kelly Shen")
+                .setColor(Color.parseColor("#00BCD4"))
+                .extend(wearableExtender)
+                .setPriority(Notification.PRIORITY_HIGH)
+                .build();
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(MainActivity.mainAct);
+        notificationManager.cancelAll();
+        notificationManager.notify(0, notification);
+
+    }
+
+    public static void notification(String name, Bitmap photo) {
+        Intent viewIntent = new Intent(MainActivity.mainAct, MainActivity.class);
+        Intent yesIntent = new Intent(MainActivity.mainAct, MainActivity.class);
+        viewIntent.putExtra("unmatched", "true");
+        yesIntent.putExtra("matched", "true");
+
         Log.d("name", name);
 //        yesIntent.putExtra("name1", name);
-        PendingIntent noPendingIntent = PendingIntent.getActivity(this, 0, viewIntent, PendingIntent.FLAG_ONE_SHOT);
-        PendingIntent yesPendingIntent = PendingIntent.getActivity(this, 0, yesIntent, PendingIntent.FLAG_ONE_SHOT);
+        PendingIntent noPendingIntent = PendingIntent.getActivity(MainActivity.mainAct, 0, viewIntent, PendingIntent.FLAG_ONE_SHOT);
+        PendingIntent yesPendingIntent = PendingIntent.getActivity(MainActivity.mainAct, 0, yesIntent, PendingIntent.FLAG_CANCEL_CURRENT);
 
         NotificationCompat.Action denyAction =
                 new NotificationCompat.Action.Builder(R.drawable.deny,
@@ -285,7 +383,7 @@ public class MainActivity extends AppCompatActivity
                         .addAction(acceptAction)
                         .setHintHideIcon(true);
 
-        Notification notification = new NotificationCompat.Builder(this)
+        Notification notification = new NotificationCompat.Builder(MainActivity.mainAct)
                 .setSmallIcon(R.drawable.earth)
                 .setContentTitle(name)
                 .setContentText("21")
@@ -294,10 +392,9 @@ public class MainActivity extends AppCompatActivity
                 .setPriority(Notification.PRIORITY_HIGH)
                 .build();
 
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(MainActivity.mainAct);
         notificationManager.cancelAll();
         notificationManager.notify(0, notification);
 
     }
-
 }

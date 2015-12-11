@@ -1,18 +1,17 @@
-package smallworld.smallworldwear;
+package com.example.briantruong626.smallworldmobile;
 
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
-import android.widget.GridView;
 
-import com.example.briantruong626.smallworldmobile.MainActivity;
 import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.WearableListenerService;
 
 public class Listener extends WearableListenerService {
     public static final String START_ACTIVITY_PATH = "/start/MainActivity";
     public static final String START_SUB_ACTIVITY = "/start/SubActivity";
+    public static final String FINISH_WATCH_FACE = "/close/MainActivity";
 
 
     @Override
@@ -28,6 +27,9 @@ public class Listener extends WearableListenerService {
             Intent intent = new Intent(this, GridView.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
+        } else if (messageEvent.getPath().equals(FINISH_WATCH_FACE)) {
+            Log.d("finishing off", "the main face");
+            MainActivity.mainAct.finish();
         }
     }
 }

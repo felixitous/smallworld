@@ -116,6 +116,24 @@
 
             </android.support.design.widget.TextInputLayout>
 
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <EditText
+                    android:id="@+id/availabilities"
+                    android:inputType="phone"
+                    android:layout_width="240dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:textSize="24dp"
+                    android:text="ex: 11am - 1pm, 3pm - 6pm"
+                    android:hint="Availabilities"
+                    />
+
+            </android.support.design.widget.TextInputLayout>
+
 
             <TextView
                 android:layout_width="fill_parent"

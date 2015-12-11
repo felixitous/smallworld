@@ -8,4 +8,9 @@
     <string name="settings">Settings</string>
     <string name="profile">Profile</string>
     <string name="recents">Recents</string>
+    <string name="Interest1">Dogs</string>
+    <string name="Interest2">Tea</string>
+    <string name="Interest3">Soccer</string>
+    <string name="Text">No further description on this topic</string>
+    <string name="title_activity_grid_view">GridView</string>
 </resources>

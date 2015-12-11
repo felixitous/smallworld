@@ -23,6 +23,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.wearable.Wearable;
 
 public class Destination extends AppCompatActivity
@@ -50,6 +51,9 @@ public class Destination extends AppCompatActivity
             mapFragment.getMapAsync(new OnMapReadyCallback() {
                 @Override
                 public void onMapReady(GoogleMap map) {
+                    map.addMarker(new MarkerOptions()
+                            .position(new LatLng(37.865102, -122.258229))
+                            .title("Hello world"));
                     loadMap(map);
                 }
             });
@@ -104,15 +108,11 @@ public class Destination extends AppCompatActivity
     @Override
     public void onConnected(Bundle dataBundle) {
         // Display the connection status
-        Location location = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-        if (location != null) {
-            Toast.makeText(this, "GPS location was found!", Toast.LENGTH_SHORT).show();
-            LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 17);
-            map.animateCamera(cameraUpdate);
-        } else {
-            Toast.makeText(this, "Current location was null, enable GPS on emulator!", Toast.LENGTH_SHORT).show();
-        }
+//        Location location = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
+//        Toast.makeText(this, "GPS location was found!", Toast.LENGTH_SHORT).show();
+        LatLng latLng = new LatLng(37.864928, -122.2588405);
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 17);
+        map.animateCamera(cameraUpdate);
     }
 
     @Override
